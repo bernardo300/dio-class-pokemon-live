@@ -52,6 +52,4 @@ class Pokemon {
     this._weight = weight;
   }
 }
-export{
-  Pokemon
-}
+export { Pokemon };

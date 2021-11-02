@@ -1,9 +1,6 @@
 import { Pokemon } from './pokemon.js';
 import { ServicePokemon } from './service.js';
 
-var BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
-var offest = 0;
-
 var ulPokemon = document.querySelector('.list_pokemon');
 var btnNext = document.getElementById('next');
 var btnPrevious = document.getElementById('previous');
@@ -75,8 +72,9 @@ function buildPokemon(
 }
 
 function handlabrir(ev) {
+  console.log(ev);
   ev.preventDefault();
-  let url = ev.target.href;
+  let url = ev.target.id;
   getPokemon(url);
 }
 
@@ -100,15 +98,20 @@ function render() {
     let aPokemon = document.createElement('a');
     let imgPokemon = document.createElement('img');
 
-    aPokemon.href = pokemon.url;
-    aPokemon.innerText = pokemon.name;
+    imgPokemon.id = pokemon.url;
+    aPokemon.id = pokemon.url;
+    aPokemon.innerText = `${pokemon.name
+      .charAt(0)
+      .toUpperCase()}${pokemon.name.slice(1)}`;
     let urlImg = pokemon.url.split('/')[6];
     imgPokemon.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${urlImg}.png`;
+    imgPokemon.disabled = true;
 
     aPokemon.addEventListener('click', handlabrir);
+    imgPokemon.addEventListener('click', handlabrir);
 
-    liPokemon.appendChild(imgPokemon);
     liPokemon.appendChild(aPokemon);
+    liPokemon.appendChild(imgPokemon);
     ulPokemon.appendChild(liPokemon);
   });
 }
