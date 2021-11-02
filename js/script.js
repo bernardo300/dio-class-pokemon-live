@@ -1,3 +1,6 @@
+import { Pokemon } from './pokemon.js';
+import { ServicePokemon } from './service.js';
+
 var BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 var offest = 0;
 
@@ -61,13 +64,13 @@ function buildPokemon(
   weight
 ) {
   return new Pokemon(
-    name = `${name.charAt(0).toUpperCase()}${name.slice(1)}`,
-    image = sprites.other.home.front_default,
-    type = `${types[0].type.name.charAt(0).toUpperCase()}${types[0].type.name.slice(1)}`,
-    ability = `${abilities[0].ability.name.charAt(0).toUpperCase()}${abilities[0].ability.name.slice(1)}`,
-    experience = base_experience,
-    height = height,
-    weight = weight
+    `${name.charAt(0).toUpperCase()}${name.slice(1)}`,
+    sprites.other.home.front_default,
+    `${types[0].type.name.charAt(0).toUpperCase()}${types[0].type.name.slice(1)}`,
+    `${abilities[0].ability.name.charAt(0).toUpperCase()}${abilities[0].ability.name.slice(1)}`,
+    base_experience,
+    height,
+    weight
   );
 }
 
@@ -99,7 +102,7 @@ function render() {
 
     aPokemon.href = pokemon.url;
     aPokemon.innerText = pokemon.name;
-    urlImg = pokemon.url.split('/')[6];
+    let urlImg = pokemon.url.split('/')[6];
     imgPokemon.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${urlImg}.png`;
 
     aPokemon.addEventListener('click', handlabrir);
