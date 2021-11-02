@@ -44,6 +44,8 @@ a {
 }
 .pokemons{
   max-width: 520px;
+  width: 520px;
+  height: 481px;
 }
 .list_pokemon a {
   text-decoration: none;
