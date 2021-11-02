@@ -12,6 +12,10 @@ body {
 a {
   color: #fff;
 }
+button{
+  color: #fff;
+  font-weight: 700;
+}
 
 
 .container-flex {
