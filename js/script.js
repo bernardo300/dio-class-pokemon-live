@@ -20,6 +20,10 @@ window.addEventListener('load', getListPokemon);
 
 async function getListPokemon(limit = 12) {
   pokemons = await service.getListPokemon();
+  var node = document.getElementById('load');
+  if (node.parentNode) {
+    node.parentNode.removeChild(node);
+  }
   render();
 }
 
