@@ -1,6 +1,7 @@
 import { Pokemon } from './pokemon.js';
 import { ServicePokemon } from './service.js';
 
+var divPokemons = document.querySelector('.pokemons');
 var ulPokemon = document.querySelector('.list_pokemon');
 var btnNext = document.getElementById('next');
 var btnPrevious = document.getElementById('previous');
@@ -19,10 +20,12 @@ var service = new ServicePokemon();
 window.addEventListener('load', getListPokemon);
 
 async function getListPokemon(limit = 12) {
+  let imgLoad = document.querySelector('.load');
   pokemons = await service.getListPokemon();
-  var node = document.getElementById('load');
-  if (node.parentNode) {
-    node.parentNode.removeChild(node);
+  if (imgLoad) {
+    if (imgLoad.parentNode) {
+      imgLoad.parentNode.removeChild(imgLoad);
+    }
   }
   render();
 }
@@ -96,6 +99,7 @@ btnPrevious.addEventListener('click', previousPage);
 btnNext.addEventListener('click', nextPage);
 
 function render() {
+  //let ulPokemon = document.createElement('ul');
   ulPokemon.innerHTML = '';
   pokemons.map((pokemon) => {
     let liPokemon = document.createElement('li');
@@ -117,5 +121,7 @@ function render() {
     liPokemon.appendChild(aPokemon);
     liPokemon.appendChild(imgPokemon);
     ulPokemon.appendChild(liPokemon);
+    ulPokemon.classList.add('list_pokemon');
+    divPokemons.appendChild(ulPokemon);
   });
 }
