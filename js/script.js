@@ -5,6 +5,7 @@ var divPokemons = document.querySelector('.pokemons');
 var ulPokemon = document.querySelector('.list_pokemon');
 var btnNext = document.getElementById('next');
 var btnPrevious = document.getElementById('previous');
+var btnPage = document.getElementById('btnpage');
 
 var namePokemon = document.getElementById('nome');
 var typePokemon = document.querySelector('.tipo');
@@ -87,11 +88,13 @@ function handlabrir(ev) {
 
 function nextPage() {
   service.offset += 12;
+  btnPage.textContent = (service.offset / 12) + 1;
   getListPokemon();
 }
 function previousPage() {
   if (service.offset > 0) {
     service.offset -= 12;
+    btnPage.textContent = (service.offset / 12) + 1;
     getListPokemon();
   }
 }
